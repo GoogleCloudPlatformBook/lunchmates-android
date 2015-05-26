@@ -84,15 +84,11 @@ public class MainActivity extends ActionBarActivity {
     private void checkSelectedAccount(String accountName) {
 
         if (accountName == null) {
-            triggerAccountSelection(credential.newChooseAccountIntent());
+            startActivityForResult(credential.newChooseAccountIntent(), ACCOUNT_PICKER_REQUEST_CODE);
         } else {
             setupLunchmatesApi(credential, accountName);
             fetchMeetingsList();
         }
-    }
-
-    private void triggerAccountSelection(Intent chooseAccountIntent) {
-        startActivityForResult(chooseAccountIntent, ACCOUNT_PICKER_REQUEST_CODE);
     }
 
     private void setupLunchmatesApi(GoogleAccountCredential credential, String accountName) {
